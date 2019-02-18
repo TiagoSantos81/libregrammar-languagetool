@@ -3323,7 +3323,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <marker>
                         <token>war</token>
                     </marker>
-                    <token regexp="yes">werden|wird|ist|sind|waren</token>
+                    <token regexp="yes">w[euü]rden?|wird|ist|sind|waren</token>
                 </pattern>
                 <message>Meinten Sie <suggestion>wahr</suggestion> (=wahrhaftig, authentisch) statt 'war' (Vergangenheit von 'sein') &odkomma;?</message>
                 <example correction="wahr">Das kann schnell <marker>war</marker> werden.</example>
@@ -3332,7 +3332,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <example correction="wahr">Wann das <marker>war</marker> ist nicht bekannt.</example>
             </rule>
             <rule>
-                <regexp case_sensitive='yes'>\b([Ww]ird|[Ww]urde|[Ww]urden|[Ww]ürde|[Ii]st|[Ss]ind|waren) (war)\b</regexp>
+                <regexp case_sensitive='yes'>\b([Ww]ird|[Ww]urden?|[Ww]ürde|[Ii]st|[Ss]ind|waren) (war)\b</regexp>
                 <message>Meinten Sie <suggestion>wahr</suggestion> (=wahrhaftig, authentisch) statt 'war' (Vergangenheit von 'sein') &odkomma;?</message>
                 <suggestion>\1, \2</suggestion>
                 <suggestion>\2</suggestion>
@@ -5150,7 +5150,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     </marker>
                 </pattern>
                 <message>Wenn Sie 'zupasskommen' meinen, schreiben Sie <suggestion>zu<match no="3" case_conversion="startlower"/></suggestion> zusammen.</message>
-                <short>&getrennt;</short>
+                <short>&getrennt;.</short>
                 <example correction="zupass">Es kam ihm sehr <marker>zu Pass</marker>, dass sein Konkurrent zu spät kam.</example>
             </rule>
             <rule>
@@ -5162,7 +5162,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token inflected="yes">kommen</token>
                 </pattern>
                 <message>Wenn Sie das Verb 'zupasskommen' meinen, schreiben Sie <suggestion>zu<match no="2" case_conversion="startlower"/>\3</suggestion> zusammen.</message>
-                <short>&getrennt;</short>
+                <short>&getrennt;.</short>
                 <example correction="zupassekam">Obwohl ihm das Angebot überaus <marker>zu Passe</marker> kam, lehnte er es dennoch ab.</example>
             </rule>
         </rulegroup>
@@ -8020,7 +8020,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             </pattern>
             <message>Meinten Sie <suggestion>\2\3</suggestion> (eine Form des unregelmäßigen Verbs '\2tun' mit der Bedeutung 'helfen')?</message>
             <url>https://www.korrekturen.de/nachgefragt/wehtun_und_guttun.shtml</url>
-            <short>&getrennt;</short>
+            <short>&getrennt;.</short>
             <example correction="gutgetan">Das hat mir <marker>gut getan</marker>.</example>
             <example correction="wohlgetan">Die Kur hat mir <marker>wohl getan</marker>.</example>
             <example>Das kann er genauso gut tun.</example>
@@ -8081,7 +8081,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token inflected="yes">machen</token>
                 </pattern>
                 <message>Meinten Sie <suggestion>zunichte\3</suggestion> ('zunichtemachen' im Sinne von 'zerstören')?</message>
-                <short>&getrennt;</short>
+                <short>&getrennt;.</short>
                 <example correction="zunichtegemacht">Der Unfall hat alle seine Hoffnungen <marker>zu Nichte gemacht</marker>.</example>
                 <example correction="zunichtemachte">Der Unfall, der alle seine Hoffnungen <marker>zu Nichte machte</marker>.</example>
             </rule>
@@ -8091,7 +8091,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token inflected="yes">machen</token>
                 </pattern>
                 <message>Meinten Sie <suggestion>zunichte\2</suggestion> ('zunichtemachen' im Sinne von 'zerstören')?</message>
-                <short>&getrennt;</short>
+                <short>&getrennt;.</short>
                 <example correction="zunichtegemacht">Der Unfall hat alle seine Hoffnungen <marker>zunichte gemacht</marker>.</example>
                 <example correction="zunichtemachte">Der Unfall, der alles <marker>zunichte machte</marker>.</example>
             </rule>
@@ -8107,7 +8107,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                     <token>Nichte</token>
                 </pattern>
                 <message>Meinten Sie <suggestion>zunichte</suggestion> (= hinfällig)?</message>
-                <short>&getrennt;</short>
+                <short>&getrennt;.</short>
                 <example correction="zunichte">Der Unfall machte alle seine Hoffnungen <marker>zu Nichte</marker>.</example>
                 <example>Wie intensiv und welcher Art war den bisher der Kontakt zu Nichte und Neffe?</example>
             </rule>
@@ -8126,7 +8126,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             </pattern>
             <message>Meinten Sie <suggestion>vonnöten</suggestion> (im Sinne von <suggestion>notwendig</suggestion>)?</message>
             <url>https://www.korrekturen.de/beliebte_fehler/von_noeten.shtml</url>
-            <short>&getrennt;</short>
+            <short>&getrennt;.</short>
             <example correction="vonnöten|notwendig">Hier ist schnelle Hilfe <marker>von Nöten</marker>.</example>
         </rule>
         <rule id="WOHL_GEMERKT" name="wohl gemerkt vs. wohlgemerkt">
@@ -8138,7 +8138,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <token><exception>,</exception><exception inflected='yes'>haben</exception></token>
             </pattern>
             <message>Meinten Sie <suggestion>wohlgemerkt</suggestion> (notabene, übrigens)?</message>
-            <short>&getrennt;</short>
+            <short>&getrennt;.</short>
             <example correction="wohlgemerkt">Ich spreche hier <marker>wohl gemerkt</marker> von Dir!</example>
             <example>Ich habe sehr wohl gemerkt, dass Du hier bist.</example>
             <example>Das hast du wohl gemerkt, denn du lachst.</example>
@@ -8147,7 +8147,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
         <rule id="ZU_ALLERERST" name="'zu allererst (zuallererst)'">
             <regexp>(zu) (aller(erst|letzt|oberst|unterst|meist))</regexp>
             <message>Das Adverb <suggestion>\1\2</suggestion> wird zusammengeschrieben.</message>
-            <short>&getrennt;</short>
+            <short>&getrennt;.</short>
             <example correction="Zuallererst"><marker>Zu allererst</marker> mal in Ruhe nachdenken.</example>
         </rule>
         <rule id="PLAN_MAESSIG" name="'plan mäßig (planmäßig)' etc.">
@@ -8159,7 +8159,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 </marker>
             </pattern>
             <message>Meinten Sie <suggestion><match no="2" case_conversion="startlower"/><match no="3" case_conversion="startlower"/></suggestion>?</message>
-            <short>&getrennt;</short>
+            <short>&getrennt;.</short>
             <example correction="planmäßig">Die Migration wurde <marker>Plan mäßig</marker> durchgeführt.</example>
             <example>Ich habe den <marker>Plan mäßig</marker> durchgeführt.</example>
         </rule>
@@ -8170,7 +8170,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
             </pattern>
             <message>Das Adverb <suggestion>\1<match no="2" case_conversion="startlower"/></suggestion> wird zusammengeschrieben.</message>
             <url>https://www.duden.de/rechtschreibung/gezwungenermaszen</url>
-            <short>&getrennt;</short>
+            <short>&getrennt;.</short>
             <example correction="gezwungenermaßen">Ich muss <marker>gezwungener maßen</marker> in Java programmieren.</example>
             <example correction="Bekanntermaßen"><marker>Bekannter Maßen</marker> sind viele einfach depressiv.</example>
         </rule>
@@ -10307,12 +10307,12 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <pattern case_sensitive="yes">
                     <marker>
                         <token>krank</token>
-                        <token inflected="yes" regexp="yes">melden|schreiben</token>
+                        <token inflected="yes" regexp="yes">feiern|lachen|melden|schießen|schreiben</token>
                     </marker>
                 </pattern>
-                <message>Falls Sie eine Form des Verbs 'krankschreiben/-melden' (=Arbeitsunfägikeit attestieren/melden) meinten, muss vermutlich das Leerzeichen entfernt werden.</message>
+                <message>Falls Sie eine Form des Verbs 'krankschreiben/-melden' (=Arbeitsunfägikeit attestieren/melden) oder eine verwandte Form ('krankfeiern/-lachen') meinten, muss vermutlich das Leerzeichen entfernt werden.</message>
                 <suggestion>\1\2</suggestion>
-                <short>&getrennt;.</short>
+                <short>getrennt;.</short>
                 <example correction="krankgeschrieben">Der Arzt hat ihn <marker>krank geschrieben</marker>?</example>
                 <example correction="krankmelden">Ich muss mich leider <marker>krank melden</marker>?</example>
             </rule>
@@ -10326,7 +10326,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                         <token inflected="yes">wachhalten</token>
                     </marker>
                 </pattern>
-                <message>Schreiben Sie 'wach halten' in wörtlicher Bedeutung auseinander.</message>
+                <message>Schreiben Sie 'wach halten' in wörtlicher Bedeutung (=vom Schlaf abhalten) auseinander.</message>
                 <suggestion><match no="2" regexp_match="wach" regexp_replace="wach "/></suggestion>
                 <short>&getrennt;.</short>
                 <example correction="wach gehalten">Er hat sich mit Kaffee <marker>wachgehalten</marker>.</example>
@@ -10726,7 +10726,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
                 <pattern case_sensitive="yes">
                     <marker>
                         <token>schwer</token>
-                        <token inflected="yes" regexp="yes">fällig|flüssig|gängig|hörig|gewichtig|reich</token>
+                        <token inflected="yes" regexp="yes">fällig|flü(cht|ss)ig|gängig|hörig|gewichtig|reich</token>
                     </marker>
                 </pattern>
                 <message>Ergibt sich durch die Zusammensetzung von 'schwer' und '\2' eine neue, idiomatisierte Gesamtbedeutung, werden die Wörter zusammengeschrieben</message>
@@ -37542,7 +37542,7 @@ Andere Projekte</example>
                     </marker>
                     <token postag="ADV:TMP" min="0"/>
                     <token postag="(PRO:PER|ART):.*" postag_regexp="yes" skip="-1">
-                        <exception scope="next" regexp="yes">[,;:\"„“]</exception>
+                        <exception scope="next" regexp="yes">[,;:\"„“]|und</exception>
                     </token>
                     <token postag="VER:.*" postag_regexp="yes"><exception scope="previous">und</exception></token>
                 </pattern>
@@ -37564,6 +37564,7 @@ Andere Projekte</example>
                 <example>So kommt das einem Betrug gleich.</example>
                 <example correction="beschwert, dass">Ein Urlauber hat sich sogar darüber <marker>beschwert das</marker> der Sand zu sandig war.</example>
                 <example>Sie meldeten das dem Beamten und hofften, er würde reagieren.</example>
+                <example>Er machte das eine halbe Stunde und danach begann er wieder Sandra zu kitzeln.</example>
             </rule>
         </rulegroup>
         <rulegroup id="KOMMA_ZWISCHEN_HAUPT_UND_NEBENSATZ" name="Fehlendes Komma zwischen Haupt- und Nebensatz oder zwei Hauptsätzen">
