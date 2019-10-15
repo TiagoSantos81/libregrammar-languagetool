@@ -41,6 +41,7 @@ public class RuleMatchesAsJsonSerializer {
 
   private static final int API_VERSION = 1;
   private static final String STATUS = "";
+  private static final String PREMIUM_HINT = "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.";
   private static final String START_MARKER = "__languagetool_start_marker";
   private static final JsonFactory factory = new JsonFactory();
   
@@ -107,10 +108,14 @@ public class RuleMatchesAsJsonSerializer {
       return;
     }
     g.writeObjectFieldStart("software");
-    g.writeStringField("name", "LibreGrammar");
+    g.writeStringField("name", "LanguageTool");
     g.writeStringField("version", JLanguageTool.VERSION);
     g.writeStringField("buildDate", JLanguageTool.BUILD_DATE);
     g.writeNumberField("apiVersion", API_VERSION);
+    g.writeBooleanField("premium", JLanguageTool.isPremiumVersion());
+    if (!JLanguageTool.isPremiumVersion()) {
+      g.writeStringField("premiumHint", PREMIUM_HINT);
+    }
     g.writeStringField("status", STATUS);
     g.writeEndObject();
   }

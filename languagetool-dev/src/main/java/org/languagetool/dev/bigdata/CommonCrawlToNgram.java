@@ -15,8 +15,6 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301
  * USA
- *
- * XXX USE Alternative pom.xml (_pom.xml 134a7a589324dae2bca9f5fdafdb660fb7d35da8)
  */
 package org.languagetool.dev.bigdata;
 
@@ -25,6 +23,8 @@ import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.*;
 import org.apache.lucene.index.*;
 import org.apache.lucene.search.IndexSearcher;
+import org.apache.lucene.search.TermQuery;
+import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.jetbrains.annotations.NotNull;
@@ -35,31 +35,23 @@ import org.languagetool.languagemodel.LanguageModel;
 import org.languagetool.rules.en.GoogleStyleWordTokenizer;
 import org.languagetool.tokenizers.SentenceTokenizer;
 import org.languagetool.tokenizers.Tokenizer;
-import org.mapdb.DB;
-import org.mapdb.DBMaker;
-import org.mapdb.HTreeMap;
 import org.tukaani.xz.XZInputStream;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
 /**
- * Experimental version with use MapDB. You probably want to use
- * CommonCrawlToNgram instead.
  * Indexing the CommonCrawl-based data from http://data.statmt.org/ngrams/
  * to ngrams.
  * 
  * @since 3.2
  */
-class CommonCrawlToNgram2 implements AutoCloseable {
+class CommonCrawlToNgram implements AutoCloseable {
 
-  private static final double THRESHOLD = 0.0000001;
+  private static final double THRESHOLD = 0.00000000001;
   private static final int MAX_TOKEN_LENGTH = 20;
   
   private final File input;
@@ -67,39 +59,16 @@ class CommonCrawlToNgram2 implements AutoCloseable {
   private final File evalFile;
   private final SentenceTokenizer sentenceTokenizer;
   private final Tokenizer wordTokenizer;
-
-  // Indexing line 4460001 (20.02MB) - took 117ms, avg=254.57
-  private final DB db = DBMaker.fileDB(new File("/tmp/mapdb")).fileMmapEnable().asyncWriteEnable().cacheSize(100_000).cacheLRUEnable().make();
-
-  // Indexing line 4460001 (20.02MB) - took 154ms, avg=313.46
-  //DB db = DBMaker.fileDB(new File("/tmp/mapdb")).transactionDisable().fileMmapEnable().asyncWriteEnable().cacheSize(100_000).cacheLRUEnable().make();
-
-  // Indexing line 4460001 (20.02MB) - took 707ms, avg=326.21:
-  //DB db = DBMaker.fileDB(new File("/tmp/mapdb")).transactionDisable().fileMmapEnable().asyncWriteEnable().cacheSize(100_000).cacheLRUEnable().compressionEnable().make();
-
-  // Indexing line 4460001 (20.02MB) - took 229ms, avg=384.39
-  //DB db = DBMaker.fileDB(new File("/tmp/mapdb")).transactionDisable().fileMmapEnable().asyncWriteEnable().cacheSize(100_000).make();
-
-  // much slower (800+ on average):
-  //DB db = DBMaker.fileDB(new File("/tmp/mapdb")).transactionDisable().asyncWriteEnable().cacheSize(100_000).cacheLRUEnable().make();
-
-  private final HTreeMap<String , Long> unigramToCount = db.hashMap("map1");
-  private final HTreeMap<String , Long> bigramToCount = db.hashMap("map2");
-  private final HTreeMap<String , Long> trigramToCount = db.hashMap("map3");
-
-  private final FieldType fieldType = new FieldType();
-
+  private final Map<String, Long> unigramToCount = new HashMap<>();
+  private final Map<String, Long> bigramToCount = new HashMap<>();
+  private final Map<String, Long> trigramToCount = new HashMap<>();
   private final Map<Integer, LuceneLiveIndex> indexes = new HashMap<>();
-  private long lastTime = System.currentTimeMillis();
-  private long totalTime = 0;
-  private long totalTimeCount = 0;
-  private long trigramToCounter = 0;
   
-  private int cacheLimit = 1_000_000;  // max. number of trigrams in HashMap before we flush to Lucene and run evaluation
+  private int cacheLimit = 1_000_000;  // max. number of trigrams in HashMap before we flush to Lucene
   private long charCount = 0;
   private long lineCount = 0;
 
-  CommonCrawlToNgram2(Language language, File input, File indexTopDir, File evalFile) throws IOException {
+  CommonCrawlToNgram(Language language, File input, File indexTopDir, File evalFile) throws IOException {
     this.input = input;
     this.indexTopDir = indexTopDir;
     this.evalFile = evalFile;
@@ -108,10 +77,6 @@ class CommonCrawlToNgram2 implements AutoCloseable {
     indexes.put(1, new LuceneLiveIndex(new File(indexTopDir, "1grams")));
     indexes.put(2, new LuceneLiveIndex(new File(indexTopDir, "2grams")));
     indexes.put(3, new LuceneLiveIndex(new File(indexTopDir, "3grams")));
-    fieldType.setStored(true);
-    fieldType.setOmitNorms(true);
-    fieldType.setNumericType(FieldType.NumericType.LONG);
-    fieldType.setDocValuesType(DocValuesType.NUMERIC);
   }
   
   @Override
@@ -135,26 +100,17 @@ class CommonCrawlToNgram2 implements AutoCloseable {
       while ((n = xzIn.read(buffer)) != -1) {
         String buf = new String(buffer, 0, n);  // TODO: not always correct, we need to wait for line end first?
         String[] lines = buf.split("\n");
-        indexLines(lines);
+        indexLine(lines);
       }
     }
     writeAndEvaluate();
   }
 
-  private void indexLines(String[] lines) throws IOException {
+  private void indexLine(String[] lines) throws IOException {
     for (String line : lines) {
-      if (lineCount++ % 10_000 == 0) {
+      if (lineCount++ % 50_000 == 0) {
         float mb = (float) charCount / 1000 / 1000;
-        totalTimeCount++;
-        long thisTime = System.currentTimeMillis()-lastTime;
-        totalTime += thisTime;
-        float avgTime = (float)totalTime/totalTimeCount;
-        System.out.printf(Locale.ENGLISH, "Indexing line %d (%.2fMB) - took %dms, avg=%.2f\n", lineCount, mb, thisTime, avgTime);
-        lastTime = System.currentTimeMillis();
-      }
-      if (lineCount % 100_000 == 0) {
-        System.out.println("commit");
-        db.commit();
+        System.out.printf(Locale.ENGLISH, "Indexing line %d (%.2fMB)\n", lineCount, mb);
       }
       charCount += line.length();
       List<String> sentences = sentenceTokenizer.tokenize(line);
@@ -175,36 +131,25 @@ class CommonCrawlToNgram2 implements AutoCloseable {
         continue;
       }
       if (token.length() <= MAX_TOKEN_LENGTH) {
-        increaseValueByOne(unigramToCount, token);
+        unigramToCount.compute(token, (k, v) -> v == null ? 1 : v + 1);
       }
       if (prev != null) {
         if (token.length() <= MAX_TOKEN_LENGTH && prev.length() <= MAX_TOKEN_LENGTH) {
           String ngram = prev + " " + token;
-          increaseValueByOne(bigramToCount, ngram);
+          bigramToCount.compute(ngram, (k, v) -> v == null ? 1 : v + 1);
         }
       }
       if (prevPrev != null && prev != null) {
         if (token.length() <= MAX_TOKEN_LENGTH && prev.length() <= MAX_TOKEN_LENGTH && prevPrev.length() <= MAX_TOKEN_LENGTH) {
           String ngram = prevPrev + " " + prev + " " + token;
-          increaseValueByOne(trigramToCount, ngram);
-          trigramToCounter++;
+          trigramToCount.compute(ngram, (k, v) -> v == null ? 1 : v + 1);
         }
-        if (++trigramToCounter % cacheLimit == 0) {
+        if (trigramToCount.size() > cacheLimit) {
           writeAndEvaluate();
-          trigramToCounter = 0;
         }
       }
       prevPrev = prev;
       prev = token;
-    }
-  }
-
-  private void increaseValueByOne(Map<String, Long> map, String token) {
-    Long val = map.get(token);
-    if (val != null) {
-      map.put(token, val + 1);
-    } else {
-      map.put(token, 1L);
     }
   }
 
@@ -224,14 +169,36 @@ class CommonCrawlToNgram2 implements AutoCloseable {
   }
   
   private void writeToLucene(int ngramSize, Map<String, Long> ngramToCount) throws IOException {
-    System.out.println("Indexing " + ngramToCount.size() + " items...");
-    LuceneLiveIndex index = indexes.get(ngramSize);
-    index.indexWriter.deleteAll();
-    index.indexWriter.commit();
     long startTime = System.currentTimeMillis();
+    System.out.println("Writing " + ngramToCount.size() + " cached ngrams to Lucene index (ngramSize=" + ngramSize + ")...");
+    LuceneLiveIndex index = indexes.get(ngramSize);
+    // not sure why this doesn't work, should be faster:
+    /*DirectoryReader newReader = DirectoryReader.openIfChanged(reader);
+    if (newReader != null) {
+      reader = newReader;
+    }*/
+    index.reader = DirectoryReader.open(index.indexWriter, true);
+    index.searcher = new IndexSearcher(index.reader);
     for (Map.Entry<String, Long> entry : ngramToCount.entrySet()) {
-      Document doc = getDoc(entry.getKey(), entry.getValue());
-      index.indexWriter.addDocument(doc);
+      Term ngram = new Term("ngram", entry.getKey());
+      TopDocs topDocs = index.searcher.search(new TermQuery(ngram), 2);
+      //System.out.println(ngram + " ==> " + topDocs.totalHits);
+      if (topDocs.totalHits == 0) {
+        Document doc = getDoc(entry.getKey(), entry.getValue());
+        index.indexWriter.addDocument(doc);
+      } else if (topDocs.totalHits == 1) {
+        int docNumber = topDocs.scoreDocs[0].doc;
+        Document document = index.reader.document(docNumber);
+        long oldCount = Long.parseLong(document.getField("count").stringValue());
+        //System.out.println(ngram + " -> " + oldCount + "+" + entry.getValue());
+        index.indexWriter.deleteDocuments(ngram);
+        index.indexWriter.addDocument(getDoc(entry.getKey(), oldCount + entry.getValue()));
+        // would probably be faster, but we currently rely on the count being a common field:
+        //indexWriter.updateNumericDocValue(ngram, "count", oldCount + entry.getValue());
+      } else if (topDocs.totalHits > 1) {
+        throw new RuntimeException("Got more than one hit for: " + ngram);
+      }
+      //System.out.println("   " + entry.getKey() + " -> " + entry.getValue());
     }
     if (ngramSize == 1) {
       // TODO: runtime code will crash if there are more than 1000 of these docs, so update instead of delete
@@ -239,10 +206,10 @@ class CommonCrawlToNgram2 implements AutoCloseable {
       System.out.println("Adding totalTokenCount doc: " + total);
       addTotalTokenCountDoc(total, index.indexWriter);
     }
+    System.out.println("Commit...");
     index.indexWriter.commit();
-    index.reader = DirectoryReader.open(index.indexWriter, true);
-    index.searcher = new IndexSearcher(index.reader);
-    System.out.println("Commit done, indexing " + ngramToCount.size() + " items took " + (System.currentTimeMillis()-startTime)/1000 + "s");
+    System.out.println("Commit done, indexing took " + (System.currentTimeMillis()-startTime) + "ms");
+    ngramToCount.clear();
   }
 
   @NotNull
@@ -255,6 +222,11 @@ class CommonCrawlToNgram2 implements AutoCloseable {
 
   @NotNull
   private LongField getCountField(long count) {
+    FieldType fieldType = new FieldType();
+    fieldType.setStored(true);
+    fieldType.setOmitNorms(true);
+    fieldType.setNumericType(FieldType.NumericType.LONG);
+    fieldType.setDocValuesType(DocValuesType.NUMERIC);
     return new LongField("count", count, fieldType);
   }
 
@@ -271,7 +243,7 @@ class CommonCrawlToNgram2 implements AutoCloseable {
 
   public static void main(String[] args) throws IOException {
     if (args.length != 4) {
-      System.out.println("Usage: " + CommonCrawlToNgram2.class + " <langCode> <input.xz> <ngramIndexDir> <simpleEvalFile>");
+      System.out.println("Usage: " + CommonCrawlToNgram.class + " <langCode> <input.xz> <ngramIndexDir> <simpleEvalFile>");
       System.out.println(" <simpleEvalFile> a plain text file with simple error markup");
       System.exit(1);
     }
@@ -279,7 +251,7 @@ class CommonCrawlToNgram2 implements AutoCloseable {
     File input = new File(args[1]);
     File outputDir = new File(args[2]);
     File evalFile = new File(args[3]);
-    try (CommonCrawlToNgram2 prg = new CommonCrawlToNgram2(language, input, outputDir, evalFile)) {
+    try (CommonCrawlToNgram prg = new CommonCrawlToNgram(language, input, outputDir, evalFile)) {
       prg.indexInputFile();
     }
   }

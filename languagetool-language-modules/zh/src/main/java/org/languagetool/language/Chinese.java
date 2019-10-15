@@ -63,8 +63,7 @@ public class Chinese extends Language implements AutoCloseable {
 
   @Override
   public Contributor[] getMaintainers() {
-    return new Contributor[] { new Contributor("Tao Lin"),
-                               new Contributor("Wang Zhe (passerbya)") };
+    return new Contributor[] { new Contributor("Tao Lin") };
   }
 
   @Override

@@ -551,6 +551,8 @@ cookie
 cookies
 cool
 cools
+coorientado
+coorientados
 copyright
 copyrights
 copywriter
@@ -8558,7 +8560,6 @@ listeriose
 MacBook
 maoismo
 marujos
-MasterCard
 matreira
 matreiras
 mega-agrupamento
@@ -8684,7 +8685,6 @@ tripartidários
 tubarão-da-gronelândia
 tubarões-da-gronelândia
 TVs
-UNICRE
 Ultra-HD
 vespa-volutina
 vespas-volutina

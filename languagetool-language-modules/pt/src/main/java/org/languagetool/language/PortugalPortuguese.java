@@ -29,7 +29,7 @@ import org.languagetool.rules.*;
 import org.languagetool.rules.pt.PostReformPortugueseCompoundRule;
 import org.languagetool.rules.pt.PostReformPortugueseDashRule;
 import org.languagetool.rules.pt.PortugalPortugueseReplaceRule;
-import org.languagetool.rules.pt.PortuguesePosAgreementReplaceRule;
+import org.languagetool.rules.pt.PortugueseAgreementReplaceRule;
 
 public class PortugalPortuguese extends Portuguese {
 
@@ -50,16 +50,15 @@ public class PortugalPortuguese extends Portuguese {
     rules.add(new PostReformPortugueseCompoundRule(messages));
     rules.add(new PostReformPortugueseDashRule());
     rules.add(new PortugalPortugueseReplaceRule(messages));
-    rules.add(new PortuguesePosAgreementReplaceRule(messages));
+    rules.add(new PortugueseAgreementReplaceRule(messages));
     return rules;
   }
 
   @Override
   public int getPriorityForId(String id) {
     switch (id) {
-      case "PT_COMPOUNDS_POST_REFORM":              return  1;
-      case "PORTUGUESE_POS_AGREEMENT_REPLACE_RULE": return -8;
-      case "PORTUGUESE_OLD_SPELLING_INTERNAL":      return -9;
+      case "PT_COMPOUNDS_POST_REFORM":         return  1;
+      case "PORTUGUESE_OLD_SPELLING_INTERNAL": return -9;
     }
     return super.getPriorityForId(id);
   }

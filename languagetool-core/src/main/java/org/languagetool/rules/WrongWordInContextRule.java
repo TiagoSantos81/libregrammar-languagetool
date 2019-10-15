@@ -24,12 +24,10 @@ import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/*
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import org.jetbrains.annotations.NotNull;
-*/
 import org.languagetool.AnalyzedSentence;
 import org.languagetool.AnalyzedTokenReadings;
 import org.languagetool.JLanguageTool;
@@ -54,7 +52,6 @@ import org.languagetool.JLanguageTool;
  */
 public abstract class WrongWordInContextRule extends Rule {
 
-/*
   private static final LoadingCache<String, List<ContextWords>> cache = CacheBuilder.newBuilder()
           .expireAfterWrite(30, TimeUnit.MINUTES)
           .build(new CacheLoader<String, List<ContextWords>>() {
@@ -63,7 +60,6 @@ public abstract class WrongWordInContextRule extends Rule {
               return loadContextWords(path);
             }
           });
-*/
 
   private final List<ContextWords> contextWordsSet;
   
@@ -71,7 +67,7 @@ public abstract class WrongWordInContextRule extends Rule {
 
   public WrongWordInContextRule(ResourceBundle messages) {
     super.setCategory(new Category(CategoryIds.CONFUSED_WORDS, getCategoryString()));
-    contextWordsSet = loadContextWords(JLanguageTool.getDataBroker().getFromRulesDirAsStream(getFilename()));
+    contextWordsSet = cache.getUnchecked(getFilename());
     setLocQualityIssueType(ITSIssueType.Misspelling);
   }
 
@@ -225,14 +221,9 @@ public abstract class WrongWordInContextRule extends Rule {
   /**
    * Load words, contexts, and explanations.
    */
-  /*
   private static List<ContextWords> loadContextWords(String path) {
-   */
-  private List<ContextWords> loadContextWords(InputStream stream) {
     List<ContextWords> set = new ArrayList<>();
-    /*
     InputStream stream = JLanguageTool.getDataBroker().getFromRulesDirAsStream(path);
-     */
     try (Scanner scanner = new Scanner(stream, "utf-8")) {
       while (scanner.hasNextLine()) {
         String line = scanner.nextLine();

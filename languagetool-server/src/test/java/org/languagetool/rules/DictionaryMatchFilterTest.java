@@ -86,10 +86,10 @@ public class DictionaryMatchFilterTest {
   public void matchesWithoutFilter() throws IOException {
     JLanguageTool lt = getLT(Sets.newHashSet("foo", "bar", "foobar"), Collections.emptySet(), false);
     List<RuleMatch> matches = lt.check("This is foo. Very bar of you! Even foobar, one might say.");
-    assertEquals(4, matches.size());
+    assertEquals(3, matches.size());
     assertTrue(isForbiddenWordMatch("foo", matches.get(0)));
-    // assertTrue(isForbiddenWordMatch("bar", matches.get(1)));
-    // assertTrue(isForbiddenWordMatch("foobar", matches.get(2)));
+    assertTrue(isForbiddenWordMatch("bar", matches.get(1)));
+    assertTrue(isForbiddenWordMatch("foobar", matches.get(2)));
   }
 
 
