@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.languagetool</groupId>
         <artifactId>languagetool-parent</artifactId>
-        <version>4.8-SNAPSHOT</version>
+        <version>4.8-alpha-LT_fork</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     
@@ -116,11 +116,6 @@
         <dependency>
             <groupId>org.languagetool</groupId>
             <artifactId>languagetool-gui-commons</artifactId>
-            <version>${languagetool.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.languagetool</groupId>
-            <artifactId>languagetool-http-client</artifactId>
             <version>${languagetool.version}</version>
         </dependency>
         <dependency>

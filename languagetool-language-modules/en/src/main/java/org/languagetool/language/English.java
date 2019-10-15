@@ -18,9 +18,11 @@
  */
 package org.languagetool.language;
 
+/*
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
+*/
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.languagetool.Language;
@@ -59,6 +61,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class English extends Language implements AutoCloseable {
 
+/*
   private static final LoadingCache<String, List<Rule>> cache = CacheBuilder.newBuilder()
       .expireAfterWrite(30, TimeUnit.MINUTES)
       .build(new CacheLoader<String, List<Rule>>() {
@@ -72,6 +75,8 @@ public class English extends Language implements AutoCloseable {
           return rules;
         }
       });
+*/
+
   private static final Language AMERICAN_ENGLISH = new AmericanEnglish();
 
   private Tagger tagger;
@@ -174,7 +179,7 @@ public class English extends Language implements AutoCloseable {
 
   @Override
   public Contributor[] getMaintainers() {
-    return new Contributor[] { new Contributor("Mike Unwalla"), Contributors.MARCIN_MILKOWSKI, Contributors.DANIEL_NABER };
+    return new Contributor[] { new Contributor("Christopher Blum"), Contributors.DANIEL_NABER, new Contributor("Florian Knorr"), Contributors.MARCIN_MILKOWSKI, new Contributor("Mike Unwalla"), new Contributor("Tiago F. Santos") };
   }
 
   @Override
@@ -186,10 +191,11 @@ public class English extends Language implements AutoCloseable {
   public List<Rule> getRelevantRules(ResourceBundle messages, UserConfig userConfig, Language motherTongue, List<Language> altLanguages) throws IOException {
     List<Rule> allRules = new ArrayList<>();
     if (motherTongue != null) {
+      PatternRuleLoader loader = new PatternRuleLoader();
       if ("de".equals(motherTongue.getShortCode())) {
-        allRules.addAll(cache.getUnchecked("/org/languagetool/rules/en/grammar-l2-de.xml"));
+        allRules.addAll(loader.getRules(this.getClass().getResourceAsStream("/org/languagetool/rules/en/grammar-l2-de.xml"), "/org/languagetool/rules/en/grammar-l2-de.xml"));
       } else if ("fr".equals(motherTongue.getShortCode())) {
-        allRules.addAll(cache.getUnchecked("/org/languagetool/rules/en/grammar-l2-fr.xml"));
+        allRules.addAll(loader.getRules(this.getClass().getResourceAsStream("/org/languagetool/rules/en/grammar-l2-fr.xml"), "/org/languagetool/rules/fr/grammar-l2-de.xml"));
       }
     }
     allRules.addAll(Arrays.asList(
@@ -205,7 +211,7 @@ public class English extends Language implements AutoCloseable {
         new WhiteSpaceBeforeParagraphEnd(messages, this),
         new WhiteSpaceAtBeginOfParagraph(messages),
         new EmptyLineRule(messages, this),
-        new LongSentenceRule(messages, userConfig),
+        new LongSentenceRule(messages, userConfig, -1, true),
         new LongParagraphRule(messages, this, userConfig),
         //new OpenNMTRule(),     // commented out because of #903
         new ParagraphRepeatBeginningRule(messages, this),
@@ -220,9 +226,13 @@ public class English extends Language implements AutoCloseable {
         new EnglishWrongWordInContextRule(messages),
         new EnglishDashRule(),
         new WordCoherencyRule(messages),
+        new EnglishSimpleGrammarRule(messages),
         new EnglishDiacriticsRule(messages),
         new EnglishPlainEnglishRule(messages),
         new EnglishRedundancyRule(messages),
+        new EnglishEggcornsRule(messages),
+        new EnglishWeaselWordsRule(messages),
+        new EnglishStyleRepeatedWordRule(messages, this, userConfig),
         new ReadabilityRule(messages, this, userConfig, false),
         new ReadabilityRule(messages, this, userConfig, true)
     ));
@@ -275,10 +285,10 @@ public class English extends Language implements AutoCloseable {
       case "DO_HE_VERB":                return 1;   // prefer over HE_VERB_AGR
       case "LIGATURES":                 return 1;   // prefer over spell checker
       case "APPSTORE":                  return 1;   // prefer over spell checker
-      case "PROFANITY":                 return 5;   // prefer over spell checker
-      case "RUDE_SARCASTIC":            return 6;   // prefer over spell checker
-      case "CHILDISH_LANGUAGE":         return 8;   // prefer over spell checker
-      case "EN_DIACRITICS_REPLACE":     return 9;   // prefer over spell checker
+      case "PROFANITY":                 return -5;  // prefer over spell checker
+      case "RUDE_SARCASTIC":            return -6;  // prefer over spell checker
+      case "CHILDISH_LANGUAGE":         return -8;  // prefer over spell checker
+      case "EN_DIACRITICS_REPLACE":     return -9;  // prefer over spell checker
       case "A_INFINITIVE":              return -1;  // prefer other more specific rules (with suggestions)
       case "PRP_VB":                    return -1;  // prefer other more specific rules (with suggestions)
       case "CD_NN":                     return -1;  // prefer other more specific rules (with suggestions)
@@ -295,8 +305,11 @@ public class English extends Language implements AutoCloseable {
       case "CONFUSION_RULE":            return -20;
       case "SENTENCE_FRAGMENT":         return -50; // prefer other more important sentence start corrections.
       case "SENTENCE_FRAGMENT_SINGLE_WORDS": return -51;  // prefer other more important sentence start corrections.
+      case "EN_WEASELWORDS_REPLACE":    return -509;  // prefer other more important sentence start corrections.
       case "EN_REDUNDANCY_REPLACE":     return -510;  // style rules should always have the lowest priority.
       case "EN_PLAIN_ENGLISH_REPLACE":  return -511;  // style rules should always have the lowest priority.
+      case "EN_SIMPLE_GRAMMAR_REPLACE": return -600;  // prefer specific rules to this catch-all rule
+      case "STYLE_REPEATED_WORD_RULE_EN":  return -900;  // style rules should always have the lowest priority.
       case LongSentenceRule.RULE_ID:    return -997;
       case LongParagraphRule.RULE_ID:   return -998;
     }

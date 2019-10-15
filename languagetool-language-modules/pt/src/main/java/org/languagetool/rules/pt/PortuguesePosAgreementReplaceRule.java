@@ -35,13 +35,13 @@ import java.net.URL;
  * A rule that matches words or phrases which should not be used and suggests
  * correct ones instead.
  *
- * @author Marco A.G.Pinto
+ * @author Tiago F. Santos
  */
-public class PortugueseAgreementReplaceRule extends AbstractSimpleReplaceRule {
+public class PortuguesePosAgreementReplaceRule extends AbstractSimpleReplaceRule {
 
-  public static final String PORTUGUESE_AGREEMENT_REPLACE_RULE = "PT_AGREEMENT_REPLACE";
+  public static final String PORTUGUESE_POS_AGREEMENT_REPLACE_RULE = "PT_POS_AGREEMENT_REPLACE";
 
-  private static final Map<String, List<String>> wrongWords = loadFromPath("/pt/AOreplace.txt");
+  private static final Map<String, List<String>> wrongWords = loadFromPath("/pt/posAOreplace.txt");
   private static final Locale PT_LOCALE = new Locale("pt");
 
   @Override
@@ -49,7 +49,7 @@ public class PortugueseAgreementReplaceRule extends AbstractSimpleReplaceRule {
     return wrongWords;
   }
 
-  public PortugueseAgreementReplaceRule(ResourceBundle messages) throws IOException {
+  public PortuguesePosAgreementReplaceRule(ResourceBundle messages) throws IOException {
     super(messages);
     super.setCategory(Categories.TYPOS.getCategory(messages));
     setLocQualityIssueType(ITSIssueType.Misspelling);
@@ -60,7 +60,7 @@ public class PortugueseAgreementReplaceRule extends AbstractSimpleReplaceRule {
 
   @Override
   public final String getId() {
-    return PORTUGUESE_AGREEMENT_REPLACE_RULE;
+    return PORTUGUESE_POS_AGREEMENT_REPLACE_RULE;
   }
 
   @Override
