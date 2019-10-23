@@ -50,7 +50,7 @@ Demokratischen? Republik|Partei|Volksrepublik
 Den Haag
 Hohen? Pforte|Schule
 des Himmlischen Friedens
-Deutsche[sn]? Museums?
+Deutsche[sn]? (Museum|Theater)s?
 Deutschen? [A-Z][a-zäöü]+ Gesellschaft(en)?
 (Deutsche[nr]?|Belgische[nr]?) Schäferhund(en?)?
 Deutsche[sn]? Historische[sn]? Instituts?
@@ -69,6 +69,7 @@ ein absolutes Muss
 [eE]ine Eins|Zwei|Drei|Vier|Fünf|Sechs
 Eiserne[ns]? Kreuz
 Eiserne[nr]? Kreuzes?|Vorhangs?
+Englische[rn]? Gartens?
 Erste[rn]? Mai|Liga
 Erste[rnm]? (Weltkriege?s?|Bürgermeisters?|Offizier[es]?)
 Erste[rnm]?|Zweite[rnm]?|Dritten[rnm]?|Vierte[rnm]? Kreuzzug(es|s)?
@@ -77,7 +78,7 @@ Europäische[mnrs]? Fonds|(Atomg|G)emeinschaft|Parlamente?s?|Union|Gerichtshof(e
 Ewige[rn]? Stadt
 (Foreign|World|Fair|European|EU) Trade
 Falsche[rn]? Hasen?
-False Positives?
+False (Positives?|Negatives?)
 Familienangehörigen
 Fast Food
 Ferne[rn]? Ostens?
@@ -100,6 +101,7 @@ Gewerbetreibende[rn]?
 Gleich und Gleich
 Gleicher unter Gleichen
 Gleiches mit Gleichem
+Global Site Tag
 Golden (Globes?|Delicious)
 Goldene[nr]? Schnitt|Bulle|Palme|Bär(en)?|Löwen?|Himbeeren?
 Goldenen Schnitte?s|Zwanzigern?
@@ -140,8 +142,10 @@ Indische[nr]? Ozeans?
 Inneren? Medizin|Gürtel|Mongolei
 Inoffizielle[rn]? Mitarbeiter[sn]?
 International Airlines
+International Schools?
 Internationalen? Filmfestspielen?|Atomenergie(-Organisation|behörde|organisation)|Fernmeldeunion|Komitees?|.*tag|Raumstation|Energieagentur
 Internationale[mnr]? Währungsfonds|(Seeg|Strafg|Sportg|Militärg|G)erichtshof(e?s)?|Fonds|Klassifikation
+Internationale[mnr] Agentur für
 Internationale[ns]? Astronomischen?|Olympische[ns]?|Komitees?|Filmfestivals?|Einheitensystems?
 Internationale[rn]? (Automobil-Ausstellungs|Automobilausstellung)s?
 Intransitive[rn]s Copys?
@@ -150,6 +154,7 @@ Islamische[rn]? (Staat|Republik)
 Islamischen Staate?s
 Italienische[nr]? Republik|Salat
 Japanische[ns]? Alpen|Meer
+Jugend Forscht
 Jung und Alt
 Jungen? Digitalen? Wirtschafts?
 Jüngste[ns]? Tags?|Gerichts?
@@ -174,7 +179,7 @@ Man City
 Märkischen? Straße
 Medizinischen? Diensts?|Hochschule|Fakultät
 Militärische[rn]? Abschirmdiensts?
-Mittlere[nr]? Ostens?|R(ings?|eife)|Geschichte|Westens?
+Mittlere[nr]? Ostens?|R(ings?|eife)|Geschichte|Westens?|Altmarks?
 Moby Dick
 Mittwochfrüh
 [Mm]it Ach und
@@ -205,9 +210,11 @@ Persische[nr]? Golfs?
 Physikalischen? Gesellschaft
 Preußisch-[A-Za-zÄÖÜäöüß]+
 Private (Part(y|ies)|Equity|Practice)
+Rapid
 Real Bamako|Madrid|Estate
 Regierenden Bürgermeisters
 Regierende[mnr]? Bürgermeister(in)?
+Regular Fit
 Rheinische[ns]? Post|Schiefergebirges?|Straße
 Romantischen? Straße
 Römischen Reich Deutscher Nation
@@ -233,6 +240,8 @@ Seiner? Exzellenz
 Seltene[nr]? Erden
 S[Ii][Gg] Sauer
 Single Malt
+Skinny Fit
+Slim Fit
 Smart Cit(y|ies)|Cards?|Cabrios?|Homes?|Phones?|Watch(es)?|Meters?|Money|TVs?
 SK Rapid
 Skodas? Superbs?
@@ -274,6 +283,7 @@ Weiße[nr]? Zwerge?|Sonntags?|Tod
 Wenn und Aber
 Westfälischen? Frieden?|Friedens|Pforte
 Wilde[nr]? Westens?
+Windows Live
 Wissenschaftlichen? Dienst(e?s)?
 Wohltemperierten? Klaviers?
 Woody|Tim Allen

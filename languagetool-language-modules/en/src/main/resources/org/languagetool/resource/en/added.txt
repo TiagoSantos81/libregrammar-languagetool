@@ -7,6 +7,8 @@
 A&E	A&E	NNP
 Aadhar	Aadhar	NNP
 Abbeydale	Abbeydale	NNP
+Abdallah	Abdallah	NNP
+Abderrahim	Abderrahim	NNP
 Abdullah	Abdullah	NNP
 abelian	abelian	JJ
 Abhishek	Abhishek	NNP
@@ -91,6 +93,7 @@ actionized	actionize	VBN
 actionizes	actionize	VBZ
 actionizing	actionize	VBG
 actions	action	VBZ
+ActionScript	ActionScript	NNP
 AdBlock	AdBlock	NNP
 ADHD	ADHD	NN:U
 adhesion	adhesion	NN:UN
@@ -293,6 +296,7 @@ alkalinising	alkalinise	VBG
 alkalisers	alkaliser	NNS
 alkalizers	alkalizer	NNS
 all	all	PRP
+Allahyar	Allahyar	NNP
 allatectomise	allatectomise	VB
 allatectomise	allatectomise	VBP
 allatectomised	allatectomise	VBD
@@ -332,6 +336,7 @@ Americanizer	Americanizer	NN
 Americanizers	Americanizer	NNS
 Amex	Amex	NNP
 Amit	Amit	NNP
+Ammar	Ammar	NNP
 amnesty	amnesty	NN:U
 amphibole	amphibole	NN:U
 amplexus	amplexus	NN:U
@@ -533,6 +538,8 @@ Arduino	Arduino	NNP
 Arial	Arial	NNP
 Ariana	Ariana	NNP
 Arif	Arif	NNP
+Arise	Arise	NNP
+Arkham	Arkham	NNP
 armor-bearers	armor-bearer	NNS
 armour-bearers	armour-bearer	NNS
 armourless	armourless	JJ
@@ -710,6 +717,7 @@ attowatt	attowatt	NN
 attowatts	attowatt	NNS
 attoweber	attoweber	NN
 attowebers	attoweber	NNS
+attracted	attracted	JJ
 audial	audial	JJ
 AUGUST	August	NNP
 aurochs	aurochs	NNS
@@ -801,6 +809,7 @@ avianised	avianise	VBN
 avianises	avianise	VBZ
 avianising	avianise	VBG
 Avicii	Avicii	NNP
+aw	aw	UH
 axiomatise	axiomatise	VB
 axiomatise	axiomatise	VBP
 axiomatised	axiomatise	VBD
@@ -831,6 +840,7 @@ backup	backup	NN:U
 back-ups	back-up	NNS
 bacterisation	bacterisation	NN:UN
 baffled	baffled	JJ
+Bajaj	Bajaj	NNP
 balkanisation	balkanisation	NN:UN
 bamboozled	bamboozled	JJ
 banalisation	banalisation	NN:U
@@ -872,6 +882,7 @@ battlecruisers	battlecruiser	NNS
 Baumgartner	Baumgartner	NNP
 Bechtle	Bechtle	NNP
 Bedford	Bedford	NNP
+before	before	CC
 before	before	RB
 befuddled	befuddled	JJ
 beguiling	beguiling	JJ
@@ -890,6 +901,7 @@ belly-landed	belly-land	VBN
 belly-landing	belly-land	VBG
 belly-lands	belly-land	VBZ
 below	below	RB
+Benzema	Benzema	NNP
 bereaved	bereaved	JJ
 Bergmann	Bergmann	NNP
 Bernardino	Bernardino	NNP
@@ -952,6 +964,12 @@ bloggers	blogger	NNS
 blogging	blog	VBG
 blogs	blog	VBZ
 Bloor	Bloor	NNP
+blub	blub	VB
+blub	blub	VBP
+blubbed	blub	VBD
+blubbed	blub	VBN
+blubbing	blub	VBG
+blubs	blub	VBZ
 Bluetooth	Bluetooth	NNP
 Blumenau	Blumenau	NNP
 bobwhite	bobwhite	NNS
@@ -977,6 +995,7 @@ botrytised	botrytised	JJ
 botrytized	botrytized	JJ
 bountiful	bountiful	JJ
 Breanna	Breanna	NNP
+Breitbart	Breitbart	NNP
 bremsstrahlung	bremsstrahlung	NN:U
 Brendon	Brendon	NNP
 Brexit	Brexit	NNP
@@ -1046,6 +1065,7 @@ calendarized	calendarize	VBD
 calendarized	calendarize	VBN
 calendarizes	calendarize	VBZ
 calendarizing	calendarize	VBG
+Calibra	Calibra	NNP
 callouts	callout	NNS
 calorise	calorise	VB
 calorise	calorise	VBP
@@ -1342,6 +1362,8 @@ Cherkasy	Cherkasy	NNP
 Chernihiv	Chernihiv	NNP
 Chernivtsi	Chernivtsi	NNP
 Chetumal	Chetumal	NNP
+Chick-fil-A	Chick-fil-A	NNP
+chipped	chipped	JJ
 Chimalhuacán	Chimalhuacán	NNP
 chipped	chipped	JJ
 Chiu	Chiu	NNP
@@ -1395,6 +1417,7 @@ cinchonized	cinchonize	VBD
 cinchonized	cinchonize	VBN
 cinchonizes	cinchonize	VBZ
 cinchonizing	cinchonize	VBG
+Cineplex	Cineplex	NNP
 CIO	CIO	NN
 CIOs	CIO	NNS
 circumcision	circumcision	NN:U
@@ -1452,6 +1475,7 @@ climatized	climatize	VBD
 climatized	climatize	VBN
 climatizes	climatize	VBZ
 climatizing	climatize	VBG
+Clojure	Clojure	NNP
 close	close	RB
 cloth	cloth	NN
 Cloudflare	Cloudflare	NNP
@@ -1789,7 +1813,9 @@ cretinizes	cretinize	VBZ
 cretinizing	cretinize	VBG
 crew	crew	NNS
 criminalisation	criminalisation	NN:UN
+criteria	criteria	NNS
 CrossFit	CrossFit	NNP
+cruft	cruft	NN:U
 cryolite	cryolite	NN:U
 crystalliser	crystalliser	NN
 crystallisers	crystalliser	NNS
@@ -1925,6 +1951,7 @@ decacandela	decacandela	NN
 decacandelas	decacandela	NNS
 decacoulomb	decacoulomb	NN
 decacoulombs	decacoulomb	NNS
+Decathlon	Decathlon	NNP
 decafarad	decafarad	NN
 decafarads	decafarad	NNS
 decagray	decagray	NN
@@ -2202,6 +2229,7 @@ de-energizing	de-energize	VBG
 Deepak	Deepak	NNP
 Deepcar	Deepcar	NNP
 DeepL	DeepL	NNP
+Deezer	Deezer	NNP
 defamiliarise	defamiliarise	VB
 defamiliarise	defamiliarise	VBP
 defamiliarised	defamiliarise	VBD
@@ -2515,6 +2543,7 @@ denaturized	denaturize	VBN
 denaturizes	denaturize	VBZ
 denaturizing	denaturize	VBG
 denisation	denisation	NN:UN
+Deniz	Deniz	NNP
 Dennard	Dennard	NNP
 denormalisation	denormalisation	NN:UN
 denormalize	denormalize	VB
@@ -2786,6 +2815,9 @@ devocalized	devocalize	VBN
 devocalizes	devocalize	VBZ
 devocalizing	devocalize	VBG
 DevOps	DevOps	NN:U
+Dheeraj	Dheeraj	NNP
+diablo	diablo	NN
+diablos	diablo	NN
 diabolise	diabolise	VB
 diabolise	diabolise	VBP
 diabolised	diabolise	VBD
@@ -2848,6 +2880,7 @@ dieselizing	dieselize	VBG
 diffractogram	diffractogram	NN
 diffractograms	diffractogram	NNS
 digenic	digenic	JJ
+Digimon	Digimon	NNP
 digitalise	digitalise	VB
 digitalise	digitalise	VBP
 digitalised	digitalise	VBD
@@ -3012,6 +3045,7 @@ divisionalized	divisionalize	VBD
 divisionalized	divisionalize	VBN
 divisionalizes	divisionalize	VBZ
 divisionalizing	divisionalize	VBG
+DKIM	DKIM	NN:U
 DMs	DM	NNS
 Dnipro	Dnipro	NNP
 Docebo	Docebo	NNP
@@ -3158,6 +3192,7 @@ effeminised	effeminise	VBD
 effeminised	effeminise	VBN
 effeminises	effeminise	VBZ
 effeminising	effeminise	VBG
+Eftekhari	Eftekhari	NNP
 eggcorn	eggcorn	NN
 eggcorns	eggcorn	NNS
 egotise	egotise	VB
@@ -3349,6 +3384,7 @@ epoxidizing	epoxidize	VBG
 EQ	EQ	NN
 EQs	EQ	NNS
 Erdoğan	Erdoğan	NNP
+Ericsson	Ericsson	NNP
 ERM	ERM	NN:U
 eroticisation	eroticisation	NN:UN
 eroticise	eroticise	VB
@@ -3603,6 +3639,7 @@ extranet	extranet	NN
 extranets	extranet	NNS
 extraordinaire	extraordinaire	JJ
 Extremaduran	Extremaduran	NNP
+Fabienne	Fabienne	NNP
 Fabio	Fabio	NNP
 fabulise	fabulise	VB
 fabulise	fabulise	VBP
@@ -3866,6 +3903,8 @@ fortunizing	fortunize	VBG
 fourteenfold	fourteenfold	JJ
 fourteenfold	fourteenfold	RB
 Foxtel	Foxtel	NNP
+FQDN	FQDN	NN
+FQDNs	FQDN	NNS
 fractionalisation	fractionalisation	NN:U
 fractionalise	fractionalise	VB
 fractionalise	fractionalise	VBP
@@ -3882,7 +3921,7 @@ fractionalizing	fractionalize	VBG
 fractionise	fractionise	VB
 fractionise	fractionise	VBP
 fractionised	fractionise	VBD
-fractionised	fractionise	VBN
+fractionised	fractionise	VB
 fractionises	fractionise	VBZ
 fractionising	fractionise	VBG
 fractionize	fractionize	VB
@@ -4328,6 +4367,8 @@ graphitized	graphitize	VBD
 graphitized	graphitize	VBN
 graphitizes	graphitize	VBZ
 graphitizing	graphitize	VBG
+gratified	gratified	JJ
+Graylog	Graylog	NNP
 grayscale	grayscale	JJ
 grecianise	grecianise	VB
 grecianise	grecianise	VBP
@@ -4355,6 +4396,8 @@ GSFP	GSFP	NNP
 GST	GST	NN
 GTIN	GTIN	NN
 GTINs	GTIN	NNS
+GUI	GUI	NN
+GUIs	GUI	NNS
 GUID	GUID	NN
 guiding	guiding	JJ
 GUIDs	GUID	NNS
@@ -4397,11 +4440,14 @@ Hansardized	Hansardize	VBD
 Hansardized	Hansardize	VBN
 Hansardizes	Hansardize	VBZ
 Hansardizing	Hansardize	VBG
+Hapag-Lloyd	Hapag-Lloyd	NNP
+hard	hard	RB
 hashtag	hashtag	NN
 hashtags	hashtag	NNS
 Hassan	Hassan	NNP
 HC	HC	NN
 HCs	HC	NNS
+HDFC	HDFC	NNP
 headstrap	headstrap	NN
 headstraps	headstrap	NNS
 Healthineers	Healthineers	NNP
@@ -4642,6 +4688,8 @@ historizing	historize	VBG
 HMRC	HMRC	NNP
 homeomeric	homeomeric	JJ
 homeomery	homeomery	NN:U
+hominin	hominin	NN
+hominins	hominin	NNS
 hominisation	hominisation	NN:UN
 hominise	hominise	VB
 hominise	hominise	VBP
@@ -5249,6 +5297,8 @@ jasperizing	jasperize	VBG
 Javadoc	Javadoc	NNP
 JavaHelp	JavaHelp	NNP
 Javan	Javan	NNP
+JDBC	JDBC	NNP
+Jeevan	Jeevan	NNP
 Jenn	Jenn	NNP
 Jimdo	Jimdo	NNP
 Jimi	Jimi	NNP
@@ -5258,6 +5308,8 @@ john	john	NN
 johns	john	NNS
 Jong-un	Jong-un	NNP
 Joomla	Joomla	NNP
+Jørgen	Jørgen	NNP
+Jørn	Jørn	NNP
 journal	journal	VB
 journal	journal	VBP
 journaled	journal	VBD
@@ -5316,6 +5368,7 @@ just	just	RB
 Juventus	Juventus	NNP
 Kacper	Kacper	NNP
 Kaczyński	Kaczyński	NNP
+Kamal	Kamal	NNP
 Kamala	Kamala	NNP
 Kamil	Kamil	NNP
 kanji	kanji	NN:U
@@ -5391,6 +5444,7 @@ Kindle	Kindle	NNP
 Kindles	Kindle	NNPS
 Kirklees	Kirklees	NNP
 Kirsty	Kirsty	NNP
+Kjellberg	Kjellberg	NNP
 Klarna	Klarna	NNP
 knackered	knackered	JJ
 Knorr	Knorr	NNP
@@ -5398,6 +5452,7 @@ know	know	NN
 knows	know	NNS
 Konstantin	Konstantin	NNP
 Kosovo	Kosovo	NNP
+Kotlin	Kotlin	NNP
 KPI	KPI	NN
 KPIs	KPI	NNS
 Kremenchuk	Kremenchuk	NNP
@@ -5784,6 +5839,7 @@ masculinized	masculinize	VBD
 masculinized	masculinize	VBN
 masculinizes	masculinize	VBZ
 masculinizing	masculinize	VBG
+Maslow	Maslow	NNP
 Mastercard	Mastercard	NNP
 masterly	masterly	JJ
 Matamoros	Matamoros	NNP
@@ -6082,6 +6138,7 @@ metrisability	metrisability	NN:U
 metrisable	metrisable	JJ
 metrizability	metrizability	NN:UN
 meze	meze	NNS
+MFi	MFi	NNP
 micellisation	micellisation	NN:U
 micellization	micellization	NN:U
 Michał	Michał	NNP
@@ -6452,6 +6509,7 @@ monumentalised	monumentalise	VBD
 monumentalised	monumentalise	VBN
 monumentalises	monumentalise	VBZ
 monumentalising	monumentalise	VBG
+MQTT	MQTT	NNP
 Morelia	Morelia	NNP
 morph	morph	NN
 MorphoSys	MorphoSys	NNP
@@ -6504,6 +6562,7 @@ multilateralized	multilateralize	VBD
 multilateralized	multilateralize	VBN
 multilateralizes	multilateralize	VBZ
 multilateralizing	multilateralize	VBG
+multi-lingual	multi-lingual	JJ
 Multimap	Multimap	NNP
 multimerise	multimerise	VB
 multimerise	multimerise	VBP
@@ -7023,7 +7082,9 @@ omelettes	omelette	NNS
 onboarding	onboarding	NN:U
 OneDrive	OneDrive	NNP
 OneNote	OneNote	NNP
+onscreen	onscreen	JJ
 on-screen	on-screen	JJ
+onscreen	onscreen	RB
 on-screen	on-screen	RB
 onsite	onsite	JJ
 onsite	onsite	RB
@@ -7513,6 +7574,7 @@ partializes	partialize	VBZ
 partializing	partialize	VBG
 passcode	passcode	NN
 passcodes	passcode	NNS
+passé	passé	JJ
 passing	passing	JJ
 passivate	passivate	VB
 passivate	passivate	VBP
@@ -8162,6 +8224,8 @@ poetised	poetise	VBN
 poetises	poetise	VBZ
 poetising	poetise	VBG
 poison	poison	NN
+Pokémon	Pokémon	NNP
+Pokémon	Pokémon	NNPS
 polarizable	polarizable	JJ
 polemicised	polemicise	VBD
 polemicised	polemicise	VBN
@@ -8379,6 +8443,7 @@ predefined	predefine	VBD
 predefined	predefine	VBN
 predefines	predefine	VBZ
 predefining	predefine	VBG
+predominate	predominate	JJ
 preform	preform	NN
 preforms	preform	NNS
 pregnancy	pregnancy	NN:U
@@ -9628,6 +9693,7 @@ revascularizes	revascularize	VBZ
 revascularizing	revascularize	VBG
 reveal	reveal	NN
 reveals	reveal	NNS
+revered	revered	JJ
 revert	revert	NN
 reverts	revert	NNS
 revisit	revisit	NN
@@ -9875,6 +9941,7 @@ satanized	satanize	VBD
 satanized	satanize	VBN
 satanizes	satanize	VBZ
 satanizing	satanize	VBG
+satiated	satiated	JJ
 satinise	satinise	VB
 satinise	satinise	VBP
 satinised	satinise	VBD
@@ -10335,6 +10402,7 @@ somatized	somatize	VBD
 somatized	somatize	VBN
 somatizes	somatize	VBZ
 somatizing	somatize	VBG
+Sonali	Sonali	NNP
 sooner	soon	RBR
 soothing	soothing	JJ
 SoundCloud	SoundCloud	NNP
@@ -10440,6 +10508,7 @@ SSID	SSID	NN
 SSIDs	SSID	NN
 SSN	SSN	NN
 SSNs	SSN	NN
+staggered	staggered	JJ
 Stainton	Stainton	NNP
 standalone	standalone	JJ
 standardisable	standardisable	JJ
@@ -11525,12 +11594,15 @@ unsubscribed	unsubscribe	VBD
 unsubscribed	unsubscribe	VBN
 unsubscribes	unsubscribe	VBZ
 unsubscribing	unsubscribe	VBG
+Unsullied	Unsullied	NNP
+Unsullied	Unsullied	NNPS
 untag	untag	VB
 untag	untag	VBP
 untagged	untag	VBD
 untagged	untag	VBN
 untagging	untag	VBG
 untags	untag	VBZ
+until	until	CC
 unverbalised	unverbalised	JJ
 unwove	unweave	VBD
 up	up	RB
@@ -11544,6 +11616,7 @@ upselling	upsize	VBG
 upsells	upsell	NNS
 upsells	upsell	VBZ
 upset	upset	JJ
+upsettingly	upsettingly	RB
 upsize	upsize	VB
 upsize	upsize	VBP
 upsized	upsize	VBD

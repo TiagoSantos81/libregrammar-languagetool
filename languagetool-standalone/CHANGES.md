@@ -2,6 +2,10 @@
 
 ## 4.8-SNAPSHOT (release planned for 2019-12-27)
 
+#### French
+  * updated part-of-speech dictionaries to dicollecte-6.4.1
+    (https://github.com/languagetool-org/languagetool/pull/1963)
+
 #### Chinese
   * Now using https://github.com/hankcs/HanLP for tokenization (PR 1981)
 
@@ -13,6 +17,7 @@
 #### Internal
   * Experimental: the new `default="temp_off"` attribute in `grammar.xml` files will
     turn off a rule/rulegroup, but keep it activated for our nightly regression tests.
+  * Many external dependencies have been updated to new versions
 
 
 

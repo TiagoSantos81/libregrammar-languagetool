@@ -1070,6 +1070,8 @@ historizes
 historizing
 Ho Chi Minh
 hoi polloi
+hominin
+hominins
 hors de combat
 hors d'oeuvre
 hors d'oeuvres
@@ -1366,6 +1368,7 @@ melanizations
 Mellor
 memento mori
 memetic
+memoranda
 memorizable
 ménage à trois
 mens rea
@@ -1670,6 +1673,7 @@ Oliinyk
 on dit
 on dits
 onanistic
+onscreen
 onus probandi
 oophorectomize
 oophorectomized
@@ -3435,6 +3439,7 @@ upgradable
 upsell
 upselling
 upsells
+upsettingly
 upsold
 Upwork
 Valentina
@@ -3953,3 +3958,64 @@ Zalando
 Avelino
 Ph.D.
 PhDs
+Arkham
+Benzema
+Bajaj
+Breitbart
+Calibra
+Clojure
+Cineplex
+Chick-fil-A
+Deezer
+Devonport
+Digimon
+Deniz
+Costa
+Durango
+FQDN
+FQDNs
+Glenwood
+Graylog
+Grande
+Hermosa
+Hidalgo
+GUIs
+Hapag-Lloyd
+Jeevan
+Jørgen
+Jørn
+Kamal
+JDBC
+Kjellberg
+Kotlin
+MFi
+Colton
+Ammar
+Maslow
+Osama
+Palma
+Dylan
+redemptions
+Sonali
+HDFC
+Abdallah
+Abderrahim
+Addis Ababa
+Amazonas
+Ericsson
+Fabienne
+Eftekhari
+DKIM
+Dheeraj
+Collinsville
+colobus
+colobuses
+Arnaud
+advisor # variant of "adviser"
+advisors
+Allahyar
+passé
+MQTT
+ActionScript
+Decathlon
+Pokémon

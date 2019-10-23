@@ -92,6 +92,7 @@ public class GermanSpellerRule extends CompoundAwareHunspellRule {
     put("packet", "Paket");
     put("Thanks", "Danke");
     put("Ghanesen?", "Ghanaer");
+    put("Thumberg", "Thunberg");
     put("Allalei", "Allerlei");
     put("geupdate[dt]$", "upgedatet");
     //put("gefaked", "gefakt");  -- don't suggest
@@ -755,6 +756,7 @@ public class GermanSpellerRule extends CompoundAwareHunspellRule {
     put("Amalgane", "Amalgame");
     put("Dammbock", w -> Arrays.asList("Dambock", "Rammbock"));
     put("Dammhirsch", "Damhirsch");
+    put("Fairnis", "Fairness");
     putRepl("asymetrisch(ere|ste)[mnrs]?$", "ym", "ymm");
     putRepl("alterwürdig(ere|ste)[mnrs]?$", "lter", "ltehr");
     putRepl("aufständig(ere|ste)[mnrs]?$", "ig", "isch");
@@ -1036,6 +1038,14 @@ public class GermanSpellerRule extends CompoundAwareHunspellRule {
       return !isMisspelled(lastPart);
     }
     return false;
+  }
+
+  @Override
+  public boolean isMisspelled(String word) {
+    if (word.startsWith("Standart") && !word.equals("Standarte") && !word.equals("Standarten") && !word.startsWith("Standartenträger") && !word.startsWith("Standartenführer")) {
+      return true;
+    }
+    return super.isMisspelled(word);
   }
 
   @Override

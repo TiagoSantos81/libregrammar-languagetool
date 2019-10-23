@@ -1596,6 +1596,12 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
     </rule>
 
     <rule name="SENT_START + pronoun + verb/NN -&gt; verb" id="SENT_START_PRP_VB_NN">
+        <antipattern><!-- , you fool. -->
+            <token>,</token>
+            <token>you</token>
+            <token postag="NN(:UN?)?" postag_regexp="yes"/>
+            <token postag="SENT_END"/>
+        </antipattern>
         <pattern>
             <token postag="SENT_START|[:;,]" postag_regexp="yes"/>
             <token regexp="yes">I|you|we|they</token>
@@ -1613,6 +1619,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <example type="untouched">Incorrect grammar. <marker>They account must</marker> include the...</example>
         <example type="untouched">Incorrect grammar. <marker>You account is</marker> a lie!</example>
         <example type="untouched">Incorrect grammar. <marker>You account stopped</marker> working, didn't it?</example>
+        <example type="untouched">Noun. What utter nonsense, you <marker>fool</marker>.</example>
     </rule>
     <rule name="t -&gt; contraction (not/RB)" id="T_NOT">
         <pattern>
@@ -2058,6 +2065,12 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             <token regexp="yes">I|you|we|they|he|she|it</token>
             <token>last</token>
         </antipattern>
+        <antipattern><!-- What happens next shows -->
+            <token postag="WP"/>
+            <token postag_regexp="yes" postag="VB[DZ]"/>
+            <token postag="RB"/>
+            <token postag_regexp="yes" postag="VB[DZ]"/>
+        </antipattern>
         <pattern>
             <token postag="DT"><exception postag="PDT"/><exception regexp="yes">th[eo]se|each|that|much</exception></token>
             <marker>
@@ -2076,6 +2089,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <example type="untouched">... and some <marker>look</marker> not to earthly treasures, but to the riches of Heaven.</example>
         <example type="untouched">When did he last <marker>talk</marker> to them?</example>
         <example type="untouched">When did you last <marker>wipe</marker> someone's tears away?</example>
+        <example type="untouched">Verb. What happens next <marker>shows</marker> the problem in a new light.</example>
     </rule>
     <rule name="each + verb/NN -&gt; NN" id="EACH_VB_NN">
         <pattern>
@@ -3008,6 +3022,12 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <example type="ambiguous" inputform="so[so/CC,so/JJ,so/NN:U,so/RB]" outputform="so[so/JJ]">It also made him feel hate, sincere hate, for those <marker>so</marker> labeled.</example>
     </rule>
     <rule name="JJ_NN -> JJ" id="JJ_NN_JJ">
+        <antipattern><!-- guesses the number wins  -->
+            <token chunk="B-VP" postag_regexp="yes" postag="VB.*"/>
+            <token postag_regexp="yes" postag="DT|PRP\$"/>
+            <token postag_regexp="yes" postag="NN.*"/>
+            <token chunk="B-VP" postag_regexp="yes" postag="VB.*"/>
+        </antipattern>
         <pattern>
             <marker>
                 <and>
@@ -3024,6 +3044,8 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <example type="untouched">This is a nice machine.</example>
         <example type="untouched">Is much powerful and wondrous <marker>magic necessary for</marker> Harry Potter to fly?</example>
         <example type="untouched">The circus will come to <marker>town</marker> tomorrow.</example>
+        <example type="untouched">Noun. The persons who guessed the <marker>number</marker> won.</example>
+        <example type="untouched">Noun. Whoever correctly guesses the <marker>number</marker> wins the prize.</example>
     </rule>
     <rule name="required to" id="required_to">
         <pattern>
@@ -4099,10 +4121,10 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
 		<example type="ambiguous" inputform="AD[AD/NNP,ad/NN]" outputform="AD[AD/NNP]">24 <marker>AD</marker> is a memorable date.</example>
 	</rule>
 
-    <rule id="NNP_CIUDAD_DE" name="NNP for Mexican city names starting with 'Ciudad de'">
+    <rule id="NNP_CIUDAD_DE" name="NNP for Spanish geo names starting with 'Ciudad de'">
         <pattern case_sensitive="yes">
             <marker>
-                <token regexp="yes">Ciudad|Playa</token>
+                <token regexp="yes">Ciudad|Playa|Casa|Puerto</token>
                 <token>de</token>
                 <token regexp="yes" min="0">[Ll]a</token>
                 <token regexp="yes">[A-Z].+</token>
@@ -4111,10 +4133,10 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
         <disambig postag="NNP"/>
     </rule>
 
-    <rule id="NNP_CIUDAD_DEL" name="NNP for Mexican city names starting with 'Ciudad del'">
+    <rule id="NNP_CIUDAD_DEL" name="NNP for Spanish geo names starting with 'Ciudad del'">
         <pattern case_sensitive="yes">
             <marker>
-                <token regexp="yes">Ciudad|Playa</token>
+                <token regexp="yes">Ciudad|Playa|Casa|Puerto</token>
                 <token>del</token>
                 <token regexp="yes">[A-Z].+</token>
             </marker>
@@ -4130,6 +4152,14 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
                 <token regexp="yes">las?</token>
                 <token postag="NNP|UNKNOWN" postag_regexp="yes" regexp="yes" case_sensitive="yes">[A-Z].+</token>
             </marker>
+        </pattern>
+        <disambig postag="NNP"/>
+    </rule>
+
+    <rule id="NNP_OCCUPY_MOVEMENT" name="NNP for 'Occupy movement'">
+        <pattern>
+            <token>occupy</token>
+            <token>movement</token>
         </pattern>
         <disambig postag="NNP"/>
     </rule>
@@ -4597,6 +4627,14 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
             <token postag="VBZ"/>
             <token postag_regexp="yes" postag="DT|PRP\$"/>
           </antipattern>
+          <antipattern><!-- What makes you happy makes me -->
+            <token postag="WP"/>
+            <token postag_regexp="yes" postag="VB[DZ]"/>
+            <token postag_regexp="yes" postag="PRP|NNP"/>
+            <token postag_regexp="yes" postag="JJR?"/>
+            <token postag="VBZ"/>
+            <token postag_regexp="yes" postag="PRP|NNP"/>
+          </antipattern>
           <pattern>
             <token postag="JJ">
               <exception scope="previous" regexp="yes">s?he|it</exception>
@@ -4620,6 +4658,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
           <example type="untouched">Tom wishes that were true.</example>
           <example type="untouched">Verb. This component<marker>parts</marker> the wires automatically.</example>
           <example type="untouched">Verb. The reinforcement spar <marker>makes</marker> it stronger and less prone to deformation.</example>
+          <example type="untouched">Verb. What makes you happy <marker>makes</marker> me happy.</example>
           <example type="ambiguous" inputform="forces[force/NNS,force/VBZ]" outputform="forces[force/NNS]">I like military <marker>forces</marker>.</example>
         </rule>
 
@@ -5372,6 +5411,26 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
       <disambig action="replace"><wd pos="NNP"/><wd pos="NNP"/></disambig>
     </rule>
 
+    <rule name="NN: Enter Key" id="ENTER_KEY">
+      <pattern>
+          <marker>
+            <token>enter</token>
+            <token>key</token>
+          </marker>
+      </pattern>
+      <disambig action="add"><wd pos="NN"/><wd pos="NN"/></disambig>
+    </rule>
+
+    <rule name="NNS: Enter Keys" id="ENTER_KEYS">
+      <pattern>
+          <marker>
+            <token>enter</token>
+            <token>keys</token>
+          </marker>
+      </pattern>
+      <disambig action="add"><wd pos="NN"/><wd pos="NNS"/></disambig>
+    </rule>
+
     <rule name="NNP with trademark symbols" id="PROPER_NOUNS_WITH_TRADEMARK_SYMBOLS">
         <pattern>
             <token regexp="yes">([a-z]+)[™®]</token><!-- The case is not important. Some trade names have non-standard typography. Some start with a lower-case letter. NoDisambiguationEnglishPartialPosTagFilter is necessary to prevent LT ignoring typographic errors such as Yarhoo®. The rule causes false negatives with NNPs that are not legally permitted to use the ® symbol, but that is a relatively unlikely problem. (Nobody is likely to write Michael® unless they mean it.) -->
@@ -5391,7 +5450,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
     <rule id="IGNORE_SPELLING_OF_CIUDAD_DE" name="Ignore spelling of Mexican city names starting with 'Ciudad de'">
         <pattern case_sensitive="yes">
             <marker>
-                <token regexp="yes">Ciudad|Playa</token>
+                <token regexp="yes">Ciudad|Playa|Casa|Puerto</token>
                 <token>de</token>
                 <token regexp="yes" min="0">[Ll]a</token>
             </marker>
@@ -5403,7 +5462,7 @@ Incorrectly touched. <example type="untouched">Incorrect grammar. Those present 
     <rule id="IGNORE_SPELLING_OF_CIUDAD" name="Ignore spelling of Mexican city names starting with 'Ciudad del'">
         <pattern case_sensitive="yes">
             <marker>
-                <token regexp="yes">Ciudad|Playa</token>
+                <token regexp="yes">Ciudad|Playa|Casa|Puerto</token>
                 <token>del</token>
             </marker>
             <token regexp="yes">[A-Z].+</token>
